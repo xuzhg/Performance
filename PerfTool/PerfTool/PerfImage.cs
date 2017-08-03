@@ -8,11 +8,6 @@ using System.Threading.Tasks;
 
 namespace PerfTool
 {
-    enum CompType
-    {
-        Max, Mean, Min
-    }
-
     static class PerfImage
     {
         public const int Width = 500;
@@ -23,27 +18,7 @@ namespace PerfTool
         private const int ArrawLen = 15;
         private const int ArrawWidth = 6;
         private const int YScale = 6;// means draw top 60%
-        /*
-        private static IList<double> GetPercentages(IList<KeyValuePair<TestItem, TestItem>> items, Func<TestItem, double> function, out double max)
-        {
-            max = Double.MinValue;
-            IList<double> percentages = new List<double>();
-            foreach(var item in items)
-            {
-                double baseValue = function(item.Key);
-                double testValue = function(item.Value);
-                double percentage = ((testValue - baseValue) / baseValue) * 100.0;
-                double tmp = percentage < 0 ? percentage * -1 : percentage;
-                if (tmp > max)
-                {
-                    max = tmp;
-                }
-                percentages.Add(percentage);
-            }
 
-            return percentages;
-        }
-        */
         public static void Draw(Graphics gph, IEnumerable<double> percentages, int threshold)
         {
             PointF cpt = new PointF(Margin, Height/2);//center point & start point

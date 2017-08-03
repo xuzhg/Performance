@@ -28,6 +28,7 @@ namespace PerfTool
 
         private void Read()
         {
+            Items = new List<TestItem>();
             try
             {
                 XmlReaderSettings settings = new XmlReaderSettings();
@@ -40,7 +41,6 @@ namespace PerfTool
                 XmlElement runElem = (XmlElement)runNode;
                 RunId = runElem.GetAttribute("id");
 
-                Items = new List<TestItem>();
                 XmlNodeList tests = runNode.ChildNodes;
                 foreach (XmlNode xnl in tests)
                 {
@@ -67,7 +67,6 @@ namespace PerfTool
                 return;
             }
 
-            ///
             var splites = RunId.Split('.');
             TestType = splites[0];
             CreateDate = splites[1];

@@ -15,13 +15,4 @@ namespace PerfTool
         public double MarginOfError { get; set; }
         public double StdDev { get; set; }
     }
-
-    public class DiffItem
-    {
-        public string Name { get; set; }
-
-        public double Percentage { get; set; }
-
-        public bool Pass { get; set; }
-    }
 }

@@ -43,11 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PerfMarkdownAll.cs" />
     <Compile Include="PerfType.cs" />
     <Compile Include="ComLineProcesser.cs" />
     <Compile Include="PerfImage.cs" />
-    <Compile Include="PerfDraw.cs" />
-    <Compile Include="PerfRegressionMarkdown.cs" />
+    <Compile Include="PerfMarkdownRegression.cs" />
     <Compile Include="PerfMarkdown.cs" />
     <Compile Include="PerformanceTest.cs" />
     <Compile Include="Program.cs" />

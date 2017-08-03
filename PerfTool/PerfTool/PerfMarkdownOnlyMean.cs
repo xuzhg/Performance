@@ -29,7 +29,7 @@ namespace PerfTool
 
         protected override void WriteImageFile()
         {
-            PerfImage.Width = 800;
+            PerfImage.Width = 900;
             PerfImage.Height = 400;
             string meanImage = ImageFileName + ".mean.png";
             IEnumerable<double> means = Matched.Select(a => 100 * (a.Value.Mean - a.Key.Mean) / a.Key.Mean);
@@ -41,14 +41,16 @@ namespace PerfTool
             FileStream fs = new FileStream(LatestFile, FileMode.Create);
             StreamWriter sw = new StreamWriter(fs);
 
+            WriteData(sw);
+
+            sw.WriteLine("---");
+
             string head = "| VER Mean |".Replace("VER", BaseVersion);
             sw.WriteLine(head);
             sw.WriteLine("|:---:|");
 
             string meanImage = ImageFileName + ".mean.png";
-            sw.WriteLine("![image](./images/" + meanImage + ")|");
-            sw.WriteLine("---");
-            WriteData(sw);
+            sw.WriteLine("|![image](./images/" + meanImage + ")|");
 
             sw.Flush();
             sw.Close();

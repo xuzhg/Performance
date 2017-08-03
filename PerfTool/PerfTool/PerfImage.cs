@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PerfTool
 {
     static class PerfImage
     {
-        public const int Width = 500;
-        public const int Height = 400;
+        public static int Width = 450;
+        public static int Height = 400;
 
         private const int Margin = 30;
         private const int YMargin = 12; // write the percentage (%)

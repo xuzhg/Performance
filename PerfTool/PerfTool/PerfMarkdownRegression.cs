@@ -50,7 +50,9 @@ namespace PerfTool
                 // remove the last one
                 histories.RemoveAt(histories.Count - 1);
             }
-            histories.Insert(0, "- [" + Bench.CreateDate + "](./logs/" + LogFileName + ")");
+
+            string showStr = BaseVersion + "." + Bench.TestType + "." + Bench.CreateDate + "." + Bench.BuildId;
+            histories.Insert(0, "- [" + showStr + "](./logs/" + LogFileName + ")");
 
             FileStream fs = new FileStream(HistoryFileName, FileMode.Create);
             StreamWriter sw = new StreamWriter(fs);

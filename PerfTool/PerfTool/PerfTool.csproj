@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PerfMarkdownAll.cs" />
+    <Compile Include="PerfMarkdownOnlyMean.cs" />
     <Compile Include="PerfType.cs" />
     <Compile Include="ComLineProcesser.cs" />
     <Compile Include="PerfImage.cs" />

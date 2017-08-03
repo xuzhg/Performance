@@ -35,9 +35,9 @@ namespace PerfTool
             {
                 markdown = new PerfMarkdownRegression(basePerformance, currPerformance, processer.BaseVersion, processer.Threshold);
             }
-            else
+            else if (processer.PerfType == PerfType.OnlyMean)
             {
-                return -1;
+                markdown = new PerfMarkdownOnlyMean(basePerformance, currPerformance, processer.BaseVersion, processer.Threshold);
             }
             markdown.CreateMarkdown();
 

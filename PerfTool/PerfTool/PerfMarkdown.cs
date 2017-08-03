@@ -30,6 +30,7 @@ namespace PerfTool
         public PerformanceTest Latest => _latest;
         public String BaseVersion => _oldVersion;
         public int Threshold => _threshold;
+        public IList<KeyValuePair<TestItem, TestItem>> Matched => _matched;
 
         public string LatestFile { get; protected set; }
 
@@ -61,7 +62,7 @@ namespace PerfTool
             WriteImageFile(minImage, "Min", mins);
         }
 
-        private void WriteImageFile(string imageFileName, string type, IEnumerable<double> percentages)
+        protected void WriteImageFile(string imageFileName, string type, IEnumerable<double> percentages)
         {
             Bitmap bmap = new Bitmap(PerfImage.Width, PerfImage.Height);
             Graphics gph = Graphics.FromImage(bmap);
@@ -77,7 +78,7 @@ namespace PerfTool
             bmap.Save(imageFileName, ImageFormat.Png);
         }
 
-        protected void WriteLatestFile()
+        protected virtual void WriteLatestFile()
         {
             FileStream fs = new FileStream(LatestFile, FileMode.Create);
             StreamWriter sw = new StreamWriter(fs);
@@ -114,7 +115,7 @@ namespace PerfTool
             fs.Close();
         }
 
-        private void WriteData(StreamWriter sw)
+        protected void WriteData(StreamWriter sw)
         {
             sw.WriteLine("| No. | TestName | Base Max | Latest Max | Max (%) | <=> | Base Mean | Latest Mean | Mean (%) | <=> | Base Min | Latest Min | Min (%) |");
             sw.WriteLine("|:----|:---------|---------:|-----------:|--------:|-----|----------:|------------:|---------:|-----|---------:|-----------:|--------:|");

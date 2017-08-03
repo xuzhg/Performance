@@ -65,6 +65,14 @@ namespace PerfTool
 
                         case "-reg":
                         case "-REG":
+                            if (PerfType != PerfType.None)
+                            {
+                                Usage();
+                                return false;
+                            }
+                            PerfType = PerfType.Regression;
+                            break;
+
                         case "-all":
                         case "-ALL":
                             if (PerfType != PerfType.None)
@@ -73,7 +81,18 @@ namespace PerfTool
                                 return false;
                             }
 
-                            PerfType = (arg.ToUpper() == "-REG") ? PerfType.Regression : PerfType.All;
+                            PerfType = PerfType.All;
+                            break;
+
+                        case "-mean":
+                        case "-Mean":
+                            if (PerfType != PerfType.None)
+                            {
+                                Usage();
+                                return false;
+                            }
+
+                            PerfType = PerfType.OnlyMean;
                             break;
 
                         default:
@@ -155,7 +174,7 @@ namespace PerfTool
 
         private static void Usage()
         {
-            string usage = "\nUsage:\n     PerfTool.exe -b BaseFile -t TestFile -v BaseVersion -a Threshold [-reg|-all] \n";
+            string usage = "\nUsage:\n     PerfTool.exe -b BaseFile -t TestFile -v BaseVersion -a Threshold [-reg|-all|-mean] \n";
             Console.WriteLine(usage);
         }
     }

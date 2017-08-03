@@ -6,5 +6,6 @@ namespace PerfTool
         None,
         All,
         Regression,
+        OnlyMean,
     }
 }

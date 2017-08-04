@@ -155,19 +155,7 @@ namespace PerfTool
         {
             double d = (c - b) / b;
             d *= 100.0;
-            string ret = "";
-            if (d < 0)
-            {
-                d *= -1;
-                ret = "-";
-            }
-
-            d += 0.005;
-            int integer = (int)d;
-            int last = (int)((d - integer) * 100);
-            string si = String.Format("%02d", integer);
-            string ei = String.Format("%02d", last);
-            return ret + si + "." + ei + "%";
+            return d.ToString("F2") + "%";
         }
     }
 }

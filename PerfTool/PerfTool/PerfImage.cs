@@ -56,7 +56,7 @@ namespace PerfTool
                 if (Math.Abs(percent) > threshold)
                 {
                     gph.DrawEllipse(Pens.Cyan, x - 2.0f, y - 2.0f, 4, 4);
-                    gph.FillEllipse(new SolidBrush(Color.Cyan), x - x - 2.0f, y - 2.0f, 4, 4);
+                    gph.FillEllipse(new SolidBrush(Color.Cyan), x - 2.0f, y - 2.0f, 4, 4);
                 }
                 else
                 {

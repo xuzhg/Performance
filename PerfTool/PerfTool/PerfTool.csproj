@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PerfImagePillar.cs" />
     <Compile Include="PerfMarkdownAll.cs" />
+    <Compile Include="PerfMarkdownOnlyMeanWithPillar.cs" />
     <Compile Include="PerfMarkdownOnlyMean.cs" />
     <Compile Include="PerfType.cs" />
     <Compile Include="ComLineProcesser.cs" />

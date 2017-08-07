@@ -39,6 +39,11 @@ namespace PerfTool
             {
                 markdown = new PerfMarkdownOnlyMean(basePerformance, currPerformance, processer.BaseVersion, processer.Threshold);
             }
+            else if (processer.PerfType == PerfType.OnlyMeanWithPillar)
+            {
+                markdown = new PerfMarkdownOnlyMeanWithPillar(basePerformance, currPerformance, processer.BaseVersion, processer.Threshold);
+            }
+
             markdown.CreateMarkdown();
 
             return 0;

@@ -95,6 +95,17 @@ namespace PerfTool
                             PerfType = PerfType.OnlyMean;
                             break;
 
+                        case "-pillar":
+                        case "-PILLAR":
+                            if (PerfType != PerfType.None)
+                            {
+                                Usage();
+                                return false;
+                            }
+                            PerfType = PerfType.OnlyMeanWithPillar;
+
+                            break;
+
                         default:
                             Usage();
                             return false;

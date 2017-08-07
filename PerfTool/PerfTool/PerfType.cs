@@ -7,5 +7,6 @@ namespace PerfTool
         All,
         Regression,
         OnlyMean,
+        OnlyMeanWithPillar
     }
 }

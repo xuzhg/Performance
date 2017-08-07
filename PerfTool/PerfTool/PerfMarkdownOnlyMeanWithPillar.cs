@@ -30,14 +30,7 @@ namespace PerfTool
         }
 
         protected override void WriteImageFile()
-        {/*
-            int number = Matched.Count;
-            int width = PerfImagePillar.Margin + 2 + PerfImagePillar.ArrawLen;
-            width += 4; // start pedding
-            width += 4; // end pedding
-            width += (number * PerfImagePillar.PillarWidth * 2);
-            width += (number - 1) * PerfImagePillar.PillarPedding;
-            */
+        {
             PerfImagePillar.Width = 1500;
             PerfImagePillar.Height = 500;
             string meanImage = ImageFileName + ".mean.pillar.png";
@@ -60,16 +53,15 @@ namespace PerfTool
             FileStream fs = new FileStream(LatestFile, FileMode.Create);
             StreamWriter sw = new StreamWriter(fs);
 
-            WriteData(sw);
-
-            sw.WriteLine("---");
-
             string head = "| VER Mean |".Replace("VER", BaseVersion);
             sw.WriteLine(head);
             sw.WriteLine("|:---:|");
 
-            string meanImage = ImageFileName + ".mean.png";
+            string meanImage = ImageFileName + ".mean.pillar.png";
             sw.WriteLine("|![image](./images/" + meanImage + ")|");
+
+            sw.WriteLine("---");
+            WriteData(sw);
 
             sw.Flush();
             sw.Close();

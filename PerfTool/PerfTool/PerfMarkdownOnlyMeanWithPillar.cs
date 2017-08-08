@@ -31,7 +31,7 @@ namespace PerfTool
 
         protected override void WriteImageFile()
         {
-            PerfImagePillar.Width = 1500;
+            PerfImagePillar.Width = 1450;
             PerfImagePillar.Height = 500;
             string meanImage = ImageFileName + ".mean.pillar.png";
 

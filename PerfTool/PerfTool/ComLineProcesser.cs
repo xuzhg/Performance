@@ -12,6 +12,8 @@ namespace PerfTool
         public ComLineProcesser(string[] args)
         {
             _args = args;
+            Width = 500;
+            Height = 500;
         }
 
         public string BaseFile { get; private set; }
@@ -21,6 +23,10 @@ namespace PerfTool
         public string TestFile { get; private set; }
 
         public int Threshold { get; private set; }
+
+        public int Width { get; private set; }
+
+        public int Height { get; private set; }
 
         public PerfType PerfType { get; private set; }
 
@@ -60,6 +66,18 @@ namespace PerfTool
                         case "-a":
                         case "-A":
                             Threshold = Int32.Parse(_args[i + 1]);
+                            i++;
+                            break;
+
+                        case "-w":
+                        case "-W":
+                            Width = Int32.Parse(_args[i + 1]);
+                            i++;
+                            break;
+
+                        case "-h":
+                        case "-H":
+                            Width = Int32.Parse(_args[i + 1]);
                             i++;
                             break;
 
@@ -185,7 +203,7 @@ namespace PerfTool
 
         private static void Usage()
         {
-            string usage = "\nUsage:\n     PerfTool.exe -b BaseFile -t TestFile -v BaseVersion -a Threshold [-reg|-all|-mean] \n";
+            string usage = "\nUsage:\n     PerfTool.exe -b BaseFile -t TestFile -v BaseVersion -a Threshold [-reg|-all|-mean|-pillar] -w Width -h Height \n";
             Console.WriteLine(usage);
         }
     }

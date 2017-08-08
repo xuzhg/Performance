@@ -151,7 +151,7 @@ namespace PerfTool
             }
         }
 
-        private static string GetPercentage(double b, double c)
+        public static string GetPercentage(double b, double c)
         {
             double d = (c - b) / b;
             d *= 100.0;

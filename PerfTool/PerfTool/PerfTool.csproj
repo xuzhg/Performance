@@ -60,5 +60,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="XLabel.png" />
+    <EmbeddedResource Include="YLabel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Legend.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

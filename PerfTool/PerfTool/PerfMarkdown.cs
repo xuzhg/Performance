@@ -117,6 +117,33 @@ namespace PerfTool
 
         protected void WriteData(StreamWriter sw)
         {
+            sw.WriteLine("|No.|TestName|Base Max|Latest Max|Max (%)|<=>|Base Mean|Latest Mean|Mean (%)|<=>|Base Min|Latest Min|Min (%)|<=>|Base Mem(M)|Latest Mem(M)|Diff (%)|");
+            sw.WriteLine("|:--|:-------|-------:|---------:|------:|---|--------:|----------:|-------:|---|-------:|---------:|------:|---|----------:|------------:|-------:|");
+
+            string replace = _bench.TestType == "WebApiOData" ? "WebApiPerformance.Test." : "Microsoft.OData.Performance.";
+            int index = 1;
+            StringBuilder sb = new StringBuilder();
+            foreach (KeyValuePair<TestItem, TestItem> pair in _matched)
+            {
+                TestItem b = pair.Key;
+                TestItem c = pair.Value;
+                sb.Clear();
+                sb.Append("|" + index + "|").Append(pair.Key.Name.Replace(replace, "")).Append("|")
+                    .Append(b.Max).Append("|").Append(c.Max).Append("|").Append(GetPercentage(b.Max, c.Max)).Append("|").Append("|")
+                    .Append(b.Mean).Append("|").Append(c.Mean).Append("|").Append(GetPercentage(b.Mean, c.Mean)).Append("|").Append("|")
+                    .Append(b.Min).Append("|").Append(c.Min).Append("|").Append(GetPercentage(b.Min, c.Min)).Append("|");
+
+                //
+                sb.Append("|");
+                sb.Append(GetMemory(b.GCMean)).Append("|").Append(GetMemory(c.GCMean)).Append("|").Append(GetPercentage(b.GCMean, c.GCMean)).Append("|");
+
+                sw.WriteLine(sb.ToString());
+                index++;
+            }
+        }
+
+        protected void WriteData2(StreamWriter sw)
+        {
             sw.WriteLine("| No. | TestName | Base Max | Latest Max | Max (%) | <=> | Base Mean | Latest Mean | Mean (%) | <=> | Base Min | Latest Min | Min (%) |");
             sw.WriteLine("|:----|:---------|---------:|-----------:|--------:|-----|----------:|------------:|---------:|-----|---------:|-----------:|--------:|");
 
@@ -156,6 +183,13 @@ namespace PerfTool
             double d = (c - b) / b;
             d *= 100.0;
             return d.ToString("F2") + "%";
+        }
+
+        public static string GetMemory(double bytes)
+        {
+            const long tmp = 1024 * 1024;
+            double left = bytes / tmp;
+            return left.ToString("F2");// + "(m)";
         }
     }
 }

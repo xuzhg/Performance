@@ -56,6 +56,19 @@ namespace PerfTool
                     item.Max = Double.Parse(duration.GetAttribute("max"));
                     item.MarginOfError = Double.Parse(duration.GetAttribute("marginOfError"));
                     item.StdDev = Double.Parse(duration.GetAttribute("stddev"));
+
+                    // Read the Gc
+                    XmlNode gcAlloc = xnl.SelectSingleNode("summary/GCAlloc");
+                    if (gcAlloc != null)
+                    {
+                        XmlElement gcElement = (XmlElement)gcAlloc;
+                        item.GCMin = Double.Parse(gcElement.GetAttribute("min"));
+                        item.GCMean = Double.Parse(gcElement.GetAttribute("mean"));
+                        item.GCMax = Double.Parse(gcElement.GetAttribute("max"));
+                        item.GCMarginOfError = Double.Parse(gcElement.GetAttribute("marginOfError"));
+                        item.GCStdDev = Double.Parse(gcElement.GetAttribute("stddev"));
+                    }
+
                     Items.Add(item);
                     _Lookup.Add(item.Name, item);
                 }

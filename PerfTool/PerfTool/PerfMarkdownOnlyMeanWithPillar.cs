@@ -21,7 +21,7 @@ namespace PerfTool
         }
 
         public string HistoryFileName { get; private set; }
-
+         
         public override void CreateMarkdown()
         {
             base.CreateMarkdown();
@@ -42,9 +42,8 @@ namespace PerfTool
             PerfImagePillar.Draw(gph, Matched, Threshold);
 
             // Draw Legend
-            string legend = " [ V" + BaseVersion + "] / " + Bench.TestType + " / " + Bench.CreateDate + " / " + Bench.BuildId + " / " + Threshold + " %";
-            gph.DrawString(legend, new Font("Calibri", 12), Brushes.DarkBlue, new PointF(PerfImagePillar.Width / 2 - 110, 0));
-
+            // string legend = " [ V" + BaseVersion + "] / " + Bench.TestType + " / " + Bench.CreateDate + " / " + Bench.BuildId + " / " + Threshold + " %";
+            // gph.DrawString(legend, new Font("Calibri", 12), Brushes.DarkBlue, new PointF(PerfImagePillar.Width / 2 - 110, 0));
             bmap.Save(meanImage, ImageFormat.Png);
         }
 
@@ -53,7 +52,8 @@ namespace PerfTool
             FileStream fs = new FileStream(LatestFile, FileMode.Create);
             StreamWriter sw = new StreamWriter(fs);
 
-            string head = "| VER Mean |".Replace("VER", BaseVersion);
+            string head = "| Latest vs V" + BaseVersion + " / " + Bench.TestType + " / Mean / " + Bench.CreateDate + " / " + Bench.BuildId + " / " + Threshold + "%|";
+            // string head = "| VER Mean |".Replace("VER", BaseVersion);
             sw.WriteLine(head);
             sw.WriteLine("|:---:|");
 

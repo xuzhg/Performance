@@ -14,5 +14,11 @@ namespace PerfTool
         public double Max { get; set; }
         public double MarginOfError { get; set; }
         public double StdDev { get; set; }
+
+        public double GCMax { get; set; }
+        public double GCMean { get; set; }
+        public double GCMin { get; set; }
+        public double GCMarginOfError { get; set; }
+        public double GCStdDev { get; set; }
     }
 }

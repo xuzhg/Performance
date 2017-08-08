@@ -12,7 +12,7 @@ namespace PerfTool
         public static int Width = 450;
         public static int Height = 400;
 
-        public const int DefaultPillarWidth = 15;
+        public const int DefaultPillarWidth = 30;
         public const int PillarPedding = 10;
         public const int Margin = 30;
         public const int YMargin = 12; // write the percentage (%)
@@ -45,6 +45,11 @@ namespace PerfTool
             double ymaxmin = (topY - bottomY);
             float x = cpt.X + 4; // start x
             float pillarWith = CalcPillarWidth(tests.Count);
+            if (pillarWith > DefaultPillarWidth)
+            {
+                pillarWith = DefaultPillarWidth;
+            }
+
             foreach (KeyValuePair<TestItem, TestItem> test in tests)
             {
                 x = cpt.X + 4 + (pillarWith * 2 + PillarPedding) * index;
